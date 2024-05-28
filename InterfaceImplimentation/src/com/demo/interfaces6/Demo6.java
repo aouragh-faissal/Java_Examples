@@ -1,0 +1,57 @@
+package com.demo.interfaces6;
+
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+
+
+public class Demo6 extends JFrame {
+
+    private static final long serialVersionUID = -4939544011287453046L;
+    
+    private JButton btnClickMe = new JButton( "Click me!" );
+    private JButton btnPushMe = new JButton( "Push me!" );
+    private JButton btnActivateMe = new JButton( "Activate me!" );
+    
+    
+    public Demo6() {
+        super( "Implémentation d'interface" );
+        this.setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        
+        JPanel contentPane = (JPanel) this.getContentPane();
+        // Un FlowLayout permet de positionner les boutons les uns à la suite des autres.
+        contentPane.setLayout( new FlowLayout() );
+        contentPane.add( btnClickMe );
+        contentPane.add( btnPushMe );
+        contentPane.add( btnActivateMe );
+        
+        // Reference sur Methode
+        btnClickMe.addActionListener( this::btnClickMeListner   );
+
+        
+        this.setSize( 400, 200 );
+        this.setLocationRelativeTo( null );
+    }
+    
+    private void btnClickMeListner(ActionEvent  event) {
+    	System.out.println("Clicked ok 6 " + event.getSource()) ;
+    }
+    
+    public static void main( String[] args ) throws Exception {        
+        // Try to set Nimbus look and feel
+        UIManager.setLookAndFeel( new NimbusLookAndFeel() );
+
+        // Start the demo
+        Demo6 demo = new Demo6();
+        demo.setVisible( true );
+    }
+    
+}
